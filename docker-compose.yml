@@ -3,7 +3,7 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: twin
-      POSTGRES_PASSWORD: twin
+      POSTGRES_PASSWORD: ${TWIN_POSTGRES_PASSWORD:?Set a URL-safe local password}
       POSTGRES_DB: twinline
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -18,11 +18,19 @@ services:
       context: .
       dockerfile: docker/backend.Dockerfile
     environment:
-      TWIN_DATABASE_URL: postgresql://twin:twin@postgres:5432/twinline
-      TWIN_SEED_VEHICLES: "1500"
+      TWIN_DATABASE_URL: postgresql+psycopg2://twin:${TWIN_POSTGRES_PASSWORD}@postgres:5432/twinline
+      TWIN_SEED_VEHICLES: ${TWIN_SEED_VEHICLES:-1500}
       TWIN_SCENARIO: mixed
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - modeldata:/app/data/models
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 30
+      start_period: 120s
     depends_on:
       postgres:
         condition: service_healthy
@@ -34,9 +42,10 @@ services:
     environment:
       API_UPSTREAM: http://backend:8000
     ports:
-      - "5173:5173"
+      - "127.0.0.1:5173:5173"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   # --- optional ops stack: docker compose --profile ops up ---
   prometheus:
@@ -45,7 +54,7 @@ services:
     volumes:
       - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "127.0.0.1:9090:9090"
     depends_on:
       - backend
 
@@ -54,13 +63,14 @@ services:
     profiles: ["ops"]
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
-      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin   # demo-only; disable in production
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
     volumes:
       - ./docker/grafana/provisioning:/etc/grafana/provisioning
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       - prometheus
 
 volumes:
   pgdata:
+  modeldata:

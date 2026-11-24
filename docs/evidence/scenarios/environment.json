@@ -1,0 +1,13 @@
+{
+  "captured_utc": "2026-11-23T23:54:51.620796+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+  "logical_cpus": 12,
+  "seed": 42,
+  "target_finished_vehicles": 2000,
+  "database": "SQLite, local filesystem",
+  "execution": "Local Windows desktop with shared resources",
+  "physical_cpus": 10,
+  "memory_bytes": 16876888064
+}

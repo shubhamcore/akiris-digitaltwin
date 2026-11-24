@@ -1,0 +1,53 @@
+ingesting: scenario=full vehicles=2000 seed=42
+database : sqlite:///D%3A%5CTwinLine-Shubham-Release-Audit%5Cresults-v1%5Cfull_1.db
+{
+  "scenario": "full",
+  "spawned": 2696,
+  "completed": 1888,
+  "scrapped": 112,
+  "sim_seconds": 121401.9,
+  "bad_batches": [
+    "B003",
+    "B008",
+    "B022",
+    "B030",
+    "B033",
+    "B037",
+    "B080",
+    "B089",
+    "B093",
+    "B104",
+    "B106"
+  ],
+  "ingest_stats": {
+    "vehicles": 2696,
+    "vehicle_events": 93267,
+    "defects": 112
+  },
+  "wall_seconds": 40.9632,
+  "event_counts": {
+    "part_enter": 93297,
+    "environment": 2023,
+    "kpi": 84966,
+    "part_exit": 93267,
+    "sensor": 1113651,
+    "defect": 112,
+    "part_complete": 1888,
+    "machine_event": 122
+  },
+  "stage_seconds": {
+    "stream_inclusive": 40.0882,
+    "simulation_outside_emit": 10.5219,
+    "event_dispatch_excluding_etl": 3.6696,
+    "etl_handler_including_sql": 25.8967,
+    "sql_write_cursor_nested": 3.709,
+    "pipeline_outside_stream": 0.875
+  },
+  "top_utilization": {
+    "S17": 0.994,
+    "S11": 0.7644,
+    "S09": 0.7624,
+    "S10": 0.7612,
+    "S08": 0.7136
+  }
+}

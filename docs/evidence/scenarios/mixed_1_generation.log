@@ -1,0 +1,50 @@
+ingesting: scenario=mixed vehicles=2000 seed=42
+database : sqlite:///D%3A%5CTwinLine-Shubham-Release-Audit%5Cresults-v1%5Cmixed_1.db
+{
+  "scenario": "mixed",
+  "spawned": 2717,
+  "completed": 1897,
+  "scrapped": 103,
+  "sim_seconds": 122065.6,
+  "bad_batches": [
+    "B004",
+    "B013",
+    "B051",
+    "B062",
+    "B070",
+    "B095",
+    "B099"
+  ],
+  "ingest_stats": {
+    "vehicles": 2717,
+    "vehicle_events": 93822,
+    "defects": 103
+  },
+  "wall_seconds": 33.6795,
+  "event_counts": {
+    "part_enter": 93852,
+    "environment": 2034,
+    "kpi": 85428,
+    "part_exit": 93822,
+    "sensor": 552406,
+    "checklist": 7758,
+    "part_complete": 1897,
+    "defect": 103,
+    "machine_event": 128
+  },
+  "stage_seconds": {
+    "stream_inclusive": 33.1288,
+    "simulation_outside_emit": 9.1618,
+    "event_dispatch_excluding_etl": 2.6671,
+    "etl_handler_including_sql": 21.2999,
+    "sql_write_cursor_nested": 3.0303,
+    "pipeline_outside_stream": 0.5507
+  },
+  "top_utilization": {
+    "S17": 0.994,
+    "S11": 0.7664,
+    "S09": 0.7654,
+    "S10": 0.7654,
+    "S07": 0.717
+  }
+}

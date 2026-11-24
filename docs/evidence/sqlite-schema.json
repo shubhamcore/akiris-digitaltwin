@@ -1,0 +1,947 @@
+{
+  "dialect": "sqlite",
+  "server_version": [
+    3,
+    53,
+    1
+  ],
+  "orm_table_count": 22,
+  "database_table_count": 22,
+  "schema_differences": [],
+  "tables": {
+    "anomalies": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_anomalies_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_anomalies_t",
+          "column_names": [
+            "t"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_anomalies_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "data_quality_metrics": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_data_quality_metrics_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "defects": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_defects_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_defects_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "environment_samples": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "ix_environment_samples_t",
+          "column_names": [
+            "t"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "inspections": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_inspections_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_inspections_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "machine_events": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_machine_events_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "maintenance_queue": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "scenario_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "simulation_scenarios",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_maintenance_queue_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_maintenance_queue_scenario_id",
+          "column_names": [
+            "scenario_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "model_versions": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [],
+      "unique": [],
+      "checks": []
+    },
+    "plants": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [],
+      "unique": [
+        {
+          "name": null,
+          "column_names": [
+            "code"
+          ]
+        }
+      ],
+      "checks": []
+    },
+    "predictions": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "model_version_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "model_versions",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_predictions_model_version_id",
+          "column_names": [
+            "model_version_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_predictions_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "production_batches": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_production_batches_code",
+          "column_names": [
+            "code"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_production_batches_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "production_lines": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "plant_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "plants",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_production_lines_plant_id",
+          "column_names": [
+            "plant_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "recommendations": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": "fk_recommendations_line_id_production_lines",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_recommendations_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_recommendations_ref_code",
+          "column_names": [
+            "ref_code"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "sensor_readings": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_sensor_readings_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_sensor_readings_t",
+          "column_names": [
+            "t"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_sensor_readings_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "sensors": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_sensors_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "simulation_scenarios": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_simulation_scenarios_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "station_kpis": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_station_kpis_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_station_kpis_t",
+          "column_names": [
+            "t"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "station_types": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [],
+      "indexes": [],
+      "unique": [
+        {
+          "name": null,
+          "column_names": [
+            "code"
+          ]
+        }
+      ],
+      "checks": []
+    },
+    "stations": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "type_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "station_types",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_stations_code",
+          "column_names": [
+            "code"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_stations_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_stations_type_id",
+          "column_names": [
+            "type_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_stations_zone",
+          "column_names": [
+            "zone"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "twin_context": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "active_line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [],
+      "unique": [],
+      "checks": []
+    },
+    "vehicle_events": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_vehicle_events_station_id",
+          "column_names": [
+            "station_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_vehicle_events_vehicle_id",
+          "column_names": [
+            "vehicle_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "vehicles": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": null
+      },
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "batch_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_batches",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {}
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_vehicles_batch_id",
+          "column_names": [
+            "batch_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_vehicles_line_id",
+          "column_names": [
+            "line_id"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_vehicles_status",
+          "column_names": [
+            "status"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_vehicles_variant",
+          "column_names": [
+            "variant"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        },
+        {
+          "name": "ix_vehicles_vin",
+          "column_names": [
+            "vin"
+          ],
+          "unique": 0,
+          "dialect_options": {}
+        }
+      ],
+      "unique": [],
+      "checks": []
+    }
+  }
+}

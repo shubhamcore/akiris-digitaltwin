@@ -1,0 +1,1169 @@
+{
+  "dialect": "postgresql",
+  "server_version": [
+    16,
+    16
+  ],
+  "orm_table_count": 22,
+  "database_table_count": 22,
+  "schema_differences": [],
+  "tables": {
+    "anomalies": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "anomalies_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "anomalies_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "anomalies_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_anomalies_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_anomalies_t",
+          "unique": false,
+          "column_names": [
+            "t"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_anomalies_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "data_quality_metrics": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "data_quality_metrics_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "data_quality_metrics_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_data_quality_metrics_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "defects": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "defects_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "defects_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "defects_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_defects_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_defects_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "environment_samples": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "environment_samples_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "ix_environment_samples_t",
+          "unique": false,
+          "column_names": [
+            "t"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "inspections": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "inspections_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "inspections_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "inspections_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_inspections_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_inspections_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "machine_events": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "machine_events_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "machine_events_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_machine_events_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "maintenance_queue": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "maintenance_queue_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "maintenance_queue_line_id_fkey",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "maintenance_queue_scenario_id_fkey",
+          "constrained_columns": [
+            "scenario_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "simulation_scenarios",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_maintenance_queue_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_maintenance_queue_scenario_id",
+          "unique": false,
+          "column_names": [
+            "scenario_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "model_versions": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "model_versions_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [],
+      "indexes": [],
+      "unique": [],
+      "checks": []
+    },
+    "plants": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "plants_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "plants_code_key",
+          "unique": true,
+          "column_names": [
+            "code"
+          ],
+          "duplicates_constraint": "plants_code_key",
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [
+        {
+          "column_names": [
+            "code"
+          ],
+          "name": "plants_code_key",
+          "comment": null,
+          "dialect_options": {
+            "postgresql_include": [],
+            "postgresql_nulls_not_distinct": false
+          }
+        }
+      ],
+      "checks": []
+    },
+    "predictions": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "predictions_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "predictions_model_version_id_fkey",
+          "constrained_columns": [
+            "model_version_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "model_versions",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "predictions_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_predictions_model_version_id",
+          "unique": false,
+          "column_names": [
+            "model_version_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_predictions_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "production_batches": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "production_batches_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "production_batches_line_id_fkey",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_production_batches_code",
+          "unique": false,
+          "column_names": [
+            "code"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_production_batches_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "production_lines": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "production_lines_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "production_lines_plant_id_fkey",
+          "constrained_columns": [
+            "plant_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "plants",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_production_lines_plant_id",
+          "unique": false,
+          "column_names": [
+            "plant_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "recommendations": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "recommendations_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "fk_recommendations_line_id_production_lines",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_recommendations_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_recommendations_ref_code",
+          "unique": false,
+          "column_names": [
+            "ref_code"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "sensor_readings": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "sensor_readings_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "sensor_readings_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "sensor_readings_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_sensor_readings_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_sensor_readings_t",
+          "unique": false,
+          "column_names": [
+            "t"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_sensor_readings_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "sensors": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "sensors_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "sensors_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_sensors_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "simulation_scenarios": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "simulation_scenarios_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "simulation_scenarios_line_id_fkey",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_simulation_scenarios_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "station_kpis": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "station_kpis_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "station_kpis_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_station_kpis_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_station_kpis_t",
+          "unique": false,
+          "column_names": [
+            "t"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "station_types": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "station_types_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "station_types_code_key",
+          "unique": true,
+          "column_names": [
+            "code"
+          ],
+          "duplicates_constraint": "station_types_code_key",
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [
+        {
+          "column_names": [
+            "code"
+          ],
+          "name": "station_types_code_key",
+          "comment": null,
+          "dialect_options": {
+            "postgresql_include": [],
+            "postgresql_nulls_not_distinct": false
+          }
+        }
+      ],
+      "checks": []
+    },
+    "stations": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "stations_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "stations_line_id_fkey",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "stations_type_id_fkey",
+          "constrained_columns": [
+            "type_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "station_types",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_stations_code",
+          "unique": false,
+          "column_names": [
+            "code"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_stations_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_stations_type_id",
+          "unique": false,
+          "column_names": [
+            "type_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_stations_zone",
+          "unique": false,
+          "column_names": [
+            "zone"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "twin_context": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "twin_context_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "twin_context_active_line_id_fkey",
+          "constrained_columns": [
+            "active_line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [],
+      "unique": [],
+      "checks": []
+    },
+    "vehicle_events": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "vehicle_events_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "vehicle_events_station_id_fkey",
+          "constrained_columns": [
+            "station_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stations",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "vehicle_events_vehicle_id_fkey",
+          "constrained_columns": [
+            "vehicle_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "vehicles",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_vehicle_events_station_id",
+          "unique": false,
+          "column_names": [
+            "station_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_vehicle_events_vehicle_id",
+          "unique": false,
+          "column_names": [
+            "vehicle_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    },
+    "vehicles": {
+      "primary_key": {
+        "constrained_columns": [
+          "id"
+        ],
+        "name": "vehicles_pkey",
+        "comment": null,
+        "dialect_options": {
+          "postgresql_include": []
+        }
+      },
+      "foreign_keys": [
+        {
+          "name": "vehicles_batch_id_fkey",
+          "constrained_columns": [
+            "batch_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_batches",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        },
+        {
+          "name": "vehicles_line_id_fkey",
+          "constrained_columns": [
+            "line_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "production_lines",
+          "referred_columns": [
+            "id"
+          ],
+          "options": {},
+          "comment": null
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_vehicles_batch_id",
+          "unique": false,
+          "column_names": [
+            "batch_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_vehicles_line_id",
+          "unique": false,
+          "column_names": [
+            "line_id"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_vehicles_status",
+          "unique": false,
+          "column_names": [
+            "status"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_vehicles_variant",
+          "unique": false,
+          "column_names": [
+            "variant"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        },
+        {
+          "name": "ix_vehicles_vin",
+          "unique": false,
+          "column_names": [
+            "vin"
+          ],
+          "dialect_options": {
+            "postgresql_include": []
+          }
+        }
+      ],
+      "unique": [],
+      "checks": []
+    }
+  }
+}

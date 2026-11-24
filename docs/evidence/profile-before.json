@@ -1,0 +1,98 @@
+{
+  "/vehicles?limit=200": {
+    "seconds": 0.1721,
+    "queries": 203,
+    "body_sha256": "b0d756fd3d7c0619357cd15b5e77b25a52083e8ff49d21e7b6ff474e5a104afd",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT vehicles.id AS vehicles_id, vehicles.line_id AS vehicles_line_id, vehicles.vin AS vehicles_vin, vehicles.variant AS vehicles_variant, vehicles.batch_id AS vehicles_batch_id, vehicles.started_at AS vehicles_started_at, vehicles.completed_at AS vehicles_completed_at, vehicles.status AS vehicles_status, vehicles.quality_score AS vehicles_quality_score \nFROM vehicles \nWHERE vehicles.line_id = ? ORDER BY vehicles.id DESC\n LIMIT ? OFFSET ?",
+      "SELECT predictions.id AS predictions_id, predictions.vehicle_id AS predictions_vehicle_id, predictions.model_version_id AS predictions_model_version_id, predictions.created_at AS predictions_created_at, predictions.as_of_seq AS predictions_as_of_seq, predictions.defect_probability AS predictions_defect_probability, predictions.confidence AS predictions_confidence, predictions.data_completeness AS predictions_data_completeness, predictions.top_features AS predictions_top_features, predictions.outcome AS predictions_outcome, predictions.correct AS predictions_correct \nFROM predictions \nWHERE predictions.vehicle_id = ? ORDER BY predictions.created_at DESC\n LIMIT ? OFFSET ?"
+    ]
+  },
+  "/stations": {
+    "seconds": 0.6992,
+    "queries": 10,
+    "body_sha256": "dc8b24f5a623b1e83fe21f309a0c0020d9bfa7cb84a6dc170a5cfe52a6e07126",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT max(station_kpis.t) AS max_1 \nFROM station_kpis",
+      "SELECT stations.id AS stations_id, stations.line_id AS stations_line_id, stations.seq AS stations_seq, stations.code AS stations_code, stations.name AS stations_name, stations.zone AS stations_zone, stations.type_id AS stations_type_id, stations.sensor_profile AS stations_sensor_profile, stations.capacity AS stations_capacity, stations.has_tool AS stations_has_tool, stations.is_inspection AS stations_is_inspection, stations.env_sensitive AS stations_env_sensitive, stations.equipment_generation AS stations_equipment_generation, stations.criticality AS stations_criticality, stations.baseline_cycle_mu AS stations_baseline_cycle_mu, stations.baseline_cycle_sigma AS stations_baseline_cycle_sigma \nFROM stations \nWHERE stations.line_id = ? ORDER BY stations.seq",
+      "SELECT station_types.id AS station_types_id, station_types.code AS station_types_code, station_types.sensors_expected AS station_types_sensors_expected \nFROM station_types",
+      "SELECT station_kpis.id AS station_kpis_id, station_kpis.station_id AS station_kpis_station_id, station_kpis.t AS station_kpis_t, station_kpis.queue_len AS station_kpis_queue_len, station_kpis.utilization AS station_kpis_utilization, station_kpis.wear AS station_kpis_wear, station_kpis.completed AS station_kpis_completed \nFROM station_kpis JOIN (SELECT station_kpis.station_id AS station_id, max(station_kpis.t) AS mt \nFROM station_kpis GROUP BY station_kpis.station_id) AS anon_1 ON station_kpis.station_id = anon_1.station_id AND station_kpis.t = anon_1.mt",
+      "SELECT sensors.station_id AS sensors_station_id, count(*) AS count_1 \nFROM sensors GROUP BY sensors.station_id",
+      "SELECT vehicle_events.station_id AS vehicle_events_station_id, count(*) AS count_1 \nFROM vehicle_events \nWHERE vehicle_events.exited_at >= ? GROUP BY vehicle_events.station_id",
+      "SELECT anomalies.station_id AS anomalies_station_id, count(*) AS count_1 \nFROM anomalies \nWHERE anomalies.t >= ? GROUP BY anomalies.station_id"
+    ]
+  },
+  "/bottlenecks": {
+    "seconds": 0.6795,
+    "queries": 7,
+    "body_sha256": "5714fe779801f5fe45fdb2d7fe47027010c1132a2097e05f863bdf4cdde3e4bb",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT stations.id AS stations_id, stations.line_id AS stations_line_id, stations.seq AS stations_seq, stations.code AS stations_code, stations.name AS stations_name, stations.zone AS stations_zone, stations.type_id AS stations_type_id, stations.sensor_profile AS stations_sensor_profile, stations.capacity AS stations_capacity, stations.has_tool AS stations_has_tool, stations.is_inspection AS stations_is_inspection, stations.env_sensitive AS stations_env_sensitive, stations.equipment_generation AS stations_equipment_generation, stations.criticality AS stations_criticality, stations.baseline_cycle_mu AS stations_baseline_cycle_mu, stations.baseline_cycle_sigma AS stations_baseline_cycle_sigma \nFROM stations \nWHERE stations.line_id = ? ORDER BY stations.seq",
+      "SELECT max(station_kpis.t) AS max_1 \nFROM station_kpis",
+      "SELECT station_kpis.station_id AS station_kpis_station_id, avg(station_kpis.utilization) AS avg_util, max(station_kpis.queue_len) AS max_queue, avg(station_kpis.queue_len) AS avg_queue \nFROM station_kpis \nWHERE station_kpis.t >= ? GROUP BY station_kpis.station_id",
+      "SELECT vehicle_events.station_id AS vehicle_events_station_id, avg(abs(vehicle_events.cycle_dev)) AS avg_abs_dev, count(*) AS n \nFROM vehicle_events \nWHERE vehicle_events.exited_at >= ? GROUP BY vehicle_events.station_id",
+      "SELECT machine_events.id AS machine_events_id, machine_events.station_id AS machine_events_station_id, machine_events.t AS machine_events_t, machine_events.event AS machine_events_event, machine_events.wear AS machine_events_wear \nFROM machine_events JOIN stations ON stations.id = machine_events.station_id \nWHERE stations.line_id = ? AND machine_events.t >= ? ORDER BY machine_events.station_id, machine_events.t"
+    ]
+  },
+  "/production/summary": {
+    "seconds": 0.1297,
+    "queries": 9,
+    "body_sha256": "98ea582d537916463c64ce296d42aa0b112691d7ae8c51fd8f3619eb9f4589f2",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT max(station_kpis.t) AS max_1 \nFROM station_kpis",
+      "SELECT vehicles.status AS vehicles_status, count(*) AS count_1 \nFROM vehicles \nWHERE vehicles.line_id = ? GROUP BY vehicles.status",
+      "SELECT max(vehicles.completed_at) AS max_1 \nFROM vehicles \nWHERE vehicles.line_id = ?",
+      "SELECT min(vehicles.started_at) AS min_1 \nFROM vehicles \nWHERE vehicles.line_id = ?",
+      "SELECT avg(vehicles.completed_at - vehicles.started_at) AS avg_1 \nFROM vehicles \nWHERE vehicles.line_id = ? AND vehicles.status = ?",
+      "SELECT stations.zone AS stations_zone, count(*) AS count_1 \nFROM stations JOIN defects ON defects.station_id = stations.id \nWHERE stations.line_id = ? GROUP BY stations.zone",
+      "SELECT machine_events.id AS machine_events_id, machine_events.station_id AS machine_events_station_id, machine_events.t AS machine_events_t, machine_events.event AS machine_events_event, machine_events.wear AS machine_events_wear \nFROM machine_events JOIN stations ON stations.id = machine_events.station_id \nWHERE stations.line_id = ? ORDER BY machine_events.station_id, machine_events.t"
+    ]
+  },
+  "/production/trends?bucket_vehicles=50": {
+    "seconds": 0.0469,
+    "queries": 3,
+    "body_sha256": "073626a90ede3ea7b84ced1095cbf41702576b32278c36e038d9e8ebf363a0ac",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT vehicles.started_at, vehicles.completed_at, vehicles.status \nFROM vehicles \nWHERE vehicles.line_id = ? AND vehicles.completed_at IS NOT NULL ORDER BY vehicles.completed_at"
+    ]
+  },
+  "/defect-risks?threshold=0.4&limit=40": {
+    "seconds": 0.0227,
+    "queries": 3,
+    "body_sha256": "b252f964256990966186e51d58c5b03ba825925a5b50d734ada24c0df81c624c",
+    "distinct_sql": [
+      "SELECT twin_context.id, twin_context.active_line_id \nFROM twin_context \nWHERE twin_context.id = ?",
+      "SELECT production_lines.id AS production_lines_id, production_lines.plant_id AS production_lines_plant_id, production_lines.code AS production_lines_code, production_lines.name AS production_lines_name, production_lines.description AS production_lines_description, production_lines.takt_seconds AS production_lines_takt_seconds, production_lines.scenario AS production_lines_scenario, production_lines.config_path AS production_lines_config_path \nFROM production_lines ORDER BY production_lines.id\n LIMIT ? OFFSET ?",
+      "SELECT predictions.id AS predictions_id, predictions.vehicle_id AS predictions_vehicle_id, predictions.model_version_id AS predictions_model_version_id, predictions.created_at AS predictions_created_at, predictions.as_of_seq AS predictions_as_of_seq, predictions.defect_probability AS predictions_defect_probability, predictions.confidence AS predictions_confidence, predictions.data_completeness AS predictions_data_completeness, predictions.top_features AS predictions_top_features, predictions.outcome AS predictions_outcome, predictions.correct AS predictions_correct, vehicles.id AS vehicles_id, vehicles.line_id AS vehicles_line_id, vehicles.vin AS vehicles_vin, vehicles.variant AS vehicles_variant, vehicles.batch_id AS vehicles_batch_id, vehicles.started_at AS vehicles_started_at, vehicles.completed_at AS vehicles_completed_at, vehicles.status AS vehicles_status, vehicles.quality_score AS vehicles_quality_score \nFROM predictions JOIN (SELECT predictions.vehicle_id AS vehicle_id, max(predictions.id) AS mid \nFROM predictions GROUP BY predictions.vehicle_id) AS anon_1 ON predictions.id = anon_1.mid JOIN vehicles ON vehicles.id = predictions.vehicle_id \nWHERE vehicles.line_id = ? AND predictions.defect_probability >= ? ORDER BY predictions.defect_probability DESC\n LIMIT ? OFFSET ?"
+    ]
+  },
+  "/vehicles/2520/journey": {
+    "seconds": 0.0235,
+    "queries": 7,
+    "body_sha256": "2eebef465f2b479d5f9173af151ff403a233accdb4a425922644c077043c749d",
+    "distinct_sql": [
+      "SELECT vehicles.id, vehicles.line_id, vehicles.vin, vehicles.variant, vehicles.batch_id, vehicles.started_at, vehicles.completed_at, vehicles.status, vehicles.quality_score \nFROM vehicles \nWHERE vehicles.id = ?",
+      "SELECT station_types.id AS station_types_id, station_types.code AS station_types_code, station_types.sensors_expected AS station_types_sensors_expected \nFROM station_types",
+      "SELECT vehicle_events.id AS vehicle_events_id, vehicle_events.vehicle_id AS vehicle_events_vehicle_id, vehicle_events.station_id AS vehicle_events_station_id, vehicle_events.entered_at AS vehicle_events_entered_at, vehicle_events.exited_at AS vehicle_events_exited_at, vehicle_events.cycle_time AS vehicle_events_cycle_time, vehicle_events.cycle_dev AS vehicle_events_cycle_dev, vehicle_events.queue_seen AS vehicle_events_queue_seen, vehicle_events.checklist_result AS vehicle_events_checklist_result, vehicle_events.inspection_result AS vehicle_events_inspection_result, vehicle_events.anomaly_score AS vehicle_events_anomaly_score, vehicle_events.internal_flags AS vehicle_events_internal_flags, stations.id AS stations_id, stations.line_id AS stations_line_id, stations.seq AS stations_seq, stations.code AS stations_code, stations.name AS stations_name, stations.zone AS stations_zone, stations.type_id AS stations_type_id, stations.sensor_profile AS stations_sensor_profile, stations.capacity AS stations_capacity, stations.has_tool AS stations_has_tool, stations.is_inspection AS stations_is_inspection, stations.env_sensitive AS stations_env_sensitive, stations.equipment_generation AS stations_equipment_generation, stations.criticality AS stations_criticality, stations.baseline_cycle_mu AS stations_baseline_cycle_mu, stations.baseline_cycle_sigma AS stations_baseline_cycle_sigma \nFROM vehicle_events JOIN stations ON stations.id = vehicle_events.station_id \nWHERE vehicle_events.vehicle_id = ? ORDER BY vehicle_events.entered_at",
+      "SELECT sensor_readings.id AS sensor_readings_id, sensor_readings.vehicle_id AS sensor_readings_vehicle_id, sensor_readings.station_id AS sensor_readings_station_id, sensor_readings.sensor_name AS sensor_readings_sensor_name, sensor_readings.unit AS sensor_readings_unit, sensor_readings.t AS sensor_readings_t, sensor_readings.n_samples AS sensor_readings_n_samples, sensor_readings.mean AS sensor_readings_mean, sensor_readings.std AS sensor_readings_std, sensor_readings.min AS sensor_readings_min, sensor_readings.max AS sensor_readings_max, sensor_readings.status AS sensor_readings_status, sensor_readings.raw AS sensor_readings_raw \nFROM sensor_readings \nWHERE sensor_readings.vehicle_id = ?",
+      "SELECT inspections.id AS inspections_id, inspections.vehicle_id AS inspections_vehicle_id, inspections.station_id AS inspections_station_id, inspections.t AS inspections_t, inspections.result AS inspections_result, inspections.defect_id AS inspections_defect_id \nFROM inspections \nWHERE inspections.vehicle_id = ?",
+      "SELECT defects.id AS defects_id, defects.vehicle_id AS defects_vehicle_id, defects.station_id AS defects_station_id, defects.t AS defects_t, defects.severity AS defects_severity, defects.true_root_causes AS defects_true_root_causes \nFROM defects \nWHERE defects.vehicle_id = ?\n LIMIT ? OFFSET ?"
+    ]
+  },
+  "/health": {
+    "seconds": 0.0181,
+    "queries": 0,
+    "body_sha256": "554751bc50c5421feb584a03eaf4147a728efa91b73f13c0c4c371b035d40541",
+    "distinct_sql": []
+  }
+}

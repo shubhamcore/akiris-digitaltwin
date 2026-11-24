@@ -1,0 +1,36 @@
+name: Compose integration
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  postgres-compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TWIN_SEED_VEHICLES: 100
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure disposable database
+        run: |
+          password=$(openssl rand -hex 20)
+          echo "::add-mask::$password"
+          echo "TWIN_POSTGRES_PASSWORD=$password" >> "$GITHUB_ENV"
+      - name: Build and start services
+        run: docker compose up --build --detach --wait --wait-timeout 420
+      - name: Verify migrations, data and Vite proxy
+        run: |
+          docker compose exec -T backend python -m alembic -c backend/alembic.ini check
+          curl --fail http://127.0.0.1:8000/ready
+          curl --fail http://127.0.0.1:5173/ | grep -q 'id="root"'
+          curl --fail http://127.0.0.1:5173/api/stations | jq -e '.stations | length == 42'
+          curl --fail http://127.0.0.1:8000/production/summary | jq -e '.completed + .scrapped == 100'
+          docker compose down
+          docker compose up -d --wait --wait-timeout 420
+          curl --fail http://127.0.0.1:5173/api/production/summary | jq -e '.completed + .scrapped == 100'
+      - name: Service logs
+        if: failure()
+        run: docker compose logs --tail 100
+      - name: Dispose CI volumes
+        if: always()
+        run: docker compose down --volumes
+

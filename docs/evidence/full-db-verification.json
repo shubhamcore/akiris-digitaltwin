@@ -1,0 +1,33 @@
+{
+  "tables": {
+    "anomalies": 0,
+    "data_quality_metrics": 0,
+    "defects": 112,
+    "environment_samples": 2023,
+    "inspections": 12297,
+    "machine_events": 122,
+    "maintenance_queue": 0,
+    "model_versions": 0,
+    "plants": 1,
+    "predictions": 0,
+    "production_batches": 108,
+    "production_lines": 1,
+    "recommendations": 0,
+    "sensor_readings": 373068,
+    "sensors": 168,
+    "simulation_scenarios": 0,
+    "station_kpis": 84966,
+    "station_types": 12,
+    "stations": 42,
+    "twin_context": 0,
+    "vehicle_events": 93267,
+    "vehicles": 2696
+  },
+  "statuses": {
+    "completed": 1888,
+    "scrapped": 112,
+    "wip": 696
+  },
+  "pass_inspections": 12185,
+  "pass_visits": 12185
+}

@@ -1,0 +1,18 @@
+
+> twinline-frontend@0.1.0 build
+> tsc && vite build
+
+vite v7.3.8 building client environment for production...
+transforming...
+✓ 704 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:   0.32 kB
+dist/assets/index-BF55xls5.css   26.41 kB │ gzip:   5.58 kB
+dist/assets/index-BBE3OiWk.js   731.83 kB │ gzip: 203.31 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 31.29s
