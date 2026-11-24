@@ -1,10 +1,10 @@
-# TwinLine · Brownfield-aware assembly-line digital twin
+# TwinLine Â· Brownfield-aware assembly-line digital twin
 
 A manufacturing engineer can trace a vehicle through 42 simulated stations, inspect a bottleneck and see which conclusions survive when sensors disappear. TwinLine models a vehicle assembly line with SimPy, aggregates its event stream into relational records and serves three React dashboards through FastAPI. All factory data in this repository is synthetic.
 
 ![Supervisor station board](docs/screenshots/supervisor.png)
 
-[Watch the dashboard walkthrough](docs/screenshots/walkthrough.mp4) · [Architecture and ETL diagrams](docs/architecture.md) · [Database diagram](docs/database_schema.md) · [Source inventory and API routes](docs/source_inventory.md)
+[Watch the dashboard walkthrough](docs/screenshots/walkthrough.mp4) Â· [Architecture and ETL diagrams](docs/architecture.md) Â· [Database diagram](docs/database_schema.md) Â· [Source inventory and API routes](docs/source_inventory.md)
 
 ## What runs
 
@@ -45,7 +45,7 @@ Set `TWIN_POSTGRES_PASSWORD` to a newly generated, URL-safe local password in yo
 docker compose up --build --wait
 ```
 
-The backend waits for PostgreSQL, applies Alembic migrations and seeds an empty demo. PostgreSQL data and model files live in named volumes. The frontend waits for backend readiness. Use `docker compose down` to stop services and preserve both volumes. Add `--profile ops` before `up` to include Prometheus and Grafana. [Docker verification status](docs/docker_verification.md)
+The backend waits for PostgreSQL, applies Alembic migrations and seeds an empty demo. PostgreSQL data and model files live in named volumes. The frontend waits for backend readiness. Use `docker compose down` to stop services and preserve both volumes. Add `--profile ops` before `up` to include Prometheus and Grafana. [Successful Docker CI verification](docs/docker_verification.md)
 
 ## Reproduction results
 
@@ -65,5 +65,5 @@ python scripts/measure_load.py data/generated/my-experiment/mixed_1.db data/gene
 
 Each run requires a new output directory and enough disk for several databases. The benchmark report distinguishes simulation clock, pipeline wall time and end-to-end CLI time. The load test uses a shared desktop and a read-heavy, single-worker SQLite workload. Neither supports a production service-level claim.
 
-[Benchmark and per-table counts](docs/benchmark_report.md) · [Sensor experiment](docs/observability_report.md) · [Load test](docs/load_test_report.md) · [ML evaluation](docs/ml_evaluation_report.md) · [Test execution](docs/testing_report.md) · [Limitations](docs/limitations.md) · [Release changes](RELEASE_NOTES.md) · [Verified resume claims](CLAIM_VERIFICATION.md)
+[Benchmark and per-table counts](docs/benchmark_report.md) Â· [Sensor experiment](docs/observability_report.md) Â· [Load test](docs/load_test_report.md) Â· [ML evaluation](docs/ml_evaluation_report.md) Â· [Test execution](docs/testing_report.md) Â· [Limitations](docs/limitations.md) Â· [Release changes](RELEASE_NOTES.md) Â· [Verified resume claims](CLAIM_VERIFICATION.md)
 
