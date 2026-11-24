@@ -4,8 +4,13 @@ __pycache__/
 node_modules/
 dist/
 data/runs/
-data/generated/*.db
-data/generated/*.db-*
+data/generated/
+.venv/
+*.db
+*.db-*
 data/models/
+*.joblib
+.env.*
+!.env.example
 .pytest_cache/
 configs/factories/

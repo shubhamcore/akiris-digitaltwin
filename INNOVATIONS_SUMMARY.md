@@ -1,4 +1,6 @@
-# TwinLine — Five Innovations (Implemented & Verified)
+# TwinLine feature design history
+
+The following development notes describe earlier iterations. Their historical test counts and example measurements precede this release. See [current executed tests](docs/testing_report.md) and [verified claims](CLAIM_VERIFICATION.md).
 
 All five innovations are implemented as a **natural extension** of the existing
 TwinLine digital twin (FastAPI + SQLAlchemy backend, React/Vite/Tailwind

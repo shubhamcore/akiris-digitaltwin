@@ -1,0 +1,51 @@
+ingesting: scenario=brownfield vehicles=2000 seed=42
+database : sqlite:///D%3A%5CTwinLine-Shubham-Release-Audit%5Cresults-v1%5Cbrownfield_1.db
+{
+  "scenario": "brownfield",
+  "spawned": 2696,
+  "completed": 1865,
+  "scrapped": 135,
+  "sim_seconds": 121592.6,
+  "bad_batches": [
+    "B003",
+    "B004",
+    "B018",
+    "B021",
+    "B037",
+    "B040",
+    "B052",
+    "B056"
+  ],
+  "ingest_stats": {
+    "vehicles": 2696,
+    "vehicle_events": 92886,
+    "defects": 135
+  },
+  "wall_seconds": 16.3664,
+  "event_counts": {
+    "part_enter": 92917,
+    "environment": 2026,
+    "kpi": 85092,
+    "part_exit": 92886,
+    "sensor": 89039,
+    "checklist": 15337,
+    "part_complete": 1865,
+    "defect": 135,
+    "machine_event": 128
+  },
+  "stage_seconds": {
+    "stream_inclusive": 16.0262,
+    "simulation_outside_emit": 4.7026,
+    "event_dispatch_excluding_etl": 1.1585,
+    "etl_handler_including_sql": 10.165,
+    "sql_write_cursor_nested": 1.605,
+    "pipeline_outside_stream": 0.3402
+  },
+  "top_utilization": {
+    "S17": 0.994,
+    "S11": 0.7642,
+    "S09": 0.7638,
+    "S10": 0.7614,
+    "S07": 0.7144
+  }
+}

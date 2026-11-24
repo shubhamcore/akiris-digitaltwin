@@ -1,0 +1,14 @@
+{
+  "brownfield_1_generation.log": "98b5443e0e36ce134412105d2bdc9985fdb85f6c81a3e19deb43181cfc1259ad",
+  "brownfield_1_training.log": "467851d5324c1d3a457fa97f3dee843f2d89fb93995be7dfd23165c0028bef41",
+  "environment.json": "c1e83588ca5ac593edfe95791225bb9176874709c91a27a6899d0c09f2999bc6",
+  "full_1_generation.log": "d1580297d6af9f0ff03d9e4c5f2d946f19eca8f30ccceb73ebe29f7f54441b1f",
+  "full_1_training.log": "fe37a1eb3d87896fb0a83fe0cbf5c611bbde96822db0ed2b8a7c0d6c5104e2cd",
+  "full_2_generation.log": "1822daa0da67ad9fd6699afb1ef1b6401aa2c29621f3d4b4dcfc4e683c9e7c83",
+  "full_3_generation.log": "b69ea765f732758a4e3666cb7d44ba761cecb16685b3d2013ed4b70d4d69ecdc",
+  "mixed_1_generation.log": "34f12cfa306bbd91e19c10e74ec5eca70b2a89970be56141808581604685d4bd",
+  "mixed_1_training.log": "f2e0b8bbd6cb85745136aabdf225b2dc1588601cfdd6daffe6a5c89c55193305",
+  "requirements.freeze.txt": "d08143e9741235095a7330adeb2b3ca37de6e89de08602d17305b69269809032",
+  "results.json": "8376b173d4e9b11b5cf7a5e85bbff5bc6c476b5f21bed78169f2ff98df061d05",
+  "stations.csv": "b41da336ce27c775b9fd6616b3a86b47da4aba66fce0aae8e48252ad5ceb5ee6"
+}
